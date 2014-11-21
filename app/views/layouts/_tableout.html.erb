@@ -1,7 +1,7 @@
 <pre>
   <table style="font-size: 20px;">
     <tr>
-      <td><%= image_tag image_path('babki.png'), class: "left_babki", width: "100" %></td>>
+      <td><%= image_tag image_path('babki.png'), class: "left_babki", width: "100" %></td>
       <td class="text-error" align="left">
         <b>Expense: </b><%= "-" unless @tableout[0].to_i<=0 %><%= @tableout[0]%> $
       </td>

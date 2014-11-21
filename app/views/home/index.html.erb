@@ -1,0 +1,22 @@
+<h3>Application for personal income/expense</h3>
+<br>
+You can keep your expenses and income in a visual form.
+And always at hand.<br><note>To test the application, you can use <b>login: </b>test@mail.ru <b>pwd: </b>qazwsxqaz</note>
+<% if user_signed_in? %>
+    <br><b>Hello, <%= current_user.email %> - <%= Time.now.strftime("%d/%m/%Y %H:%M") %></b><br><br>
+    <%= render 'layouts/tableout' %>
+<% else %>
+    <pre>
+     <br>
+     <table with="100">
+       <tr>
+         <td>
+           <input type="button" name="commit" value="Sign in" onclick="location.href='<%= new_user_session_path%>'" class="btn btn-large btn-primary">
+         </td>
+         <td>
+           <input type="button" name="commit" value="Sign up" onclick="location.href='<%= new_user_registration_path%>'" class="btn btn-large btn-success">
+         </td>
+       </tr>
+     </table>
+   </pre>
+<% end %>

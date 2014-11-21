@@ -1,0 +1,34 @@
+<div style="padding-top: 100px;">
+  <h3>Add operation</h3>
+
+  <div class="row">
+    <div class="span6 offset3">
+      <%= form_for(@operation) do |f| %>
+          <%= f.label :type %>
+          <%= f.select(:typef, [['expense', 0], ['income', 1]], :selected => @cat_type) %>
+          <%= f.label "price($)" %>
+          <%= f.text_field :price %>
+          <%= f.label :name %>
+          <%= f.text_field :name %>
+          <%= f.label :data %>
+          <input type="text" name="incexp[datefinans]" class="cl_incexp_data_finans" id="incexp_data_finans">
+          <%= f.label :Category %>
+          <%= f.select(:categoty_id, @category_ex) %>
+          <br/>
+          <hr>
+          <%= f.submit "Create operation", class: "btn btn-large btn-primary" %>
+      <% end %>
+    </div>
+  </div>
+</div>
+<script type="text/javascript">
+    jQuery(document).ready(function ($) {
+        $(".cl_incexp_data_finans").datepicker();
+
+        $('#incexp_typef').on('change', function () {
+            location.href = '?t=' + this.value;
+        });
+
+
+    });
+</script>

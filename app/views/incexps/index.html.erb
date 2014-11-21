@@ -1,0 +1,36 @@
+<h3>List of operations for income/expense</h3>
+<% provide(:title, 'Operations') %>
+<%= render 'layouts/tableout' %>
+
+<br>
+<input type="button" name="commit" value="New Operation" onclick="location.href='<%= new_incexp_path%>'" class="btn btn-large btn-primary">
+<br>
+<% if @incexps.count>0 %>
+    <%= will_paginate %>
+    <table class="table">
+      <thead>
+      <tr>
+        <th>Data</th>
+        <th>Price</th>
+        <th>Title</th>
+        <th>Category</th>
+        <th colspan="3">Operation</th>
+      </tr>
+      </thead>
+      <tbody>
+      <% @incexps.each do |oper_| %>
+          <tr class="<%= oper_.typef==1 ? 'success':'error'%>" >
+            <td class="bg-danger"><%= oper_.datefinans.to_s(:ru_datetime) %></td>
+            <td>&nbsp;<%= " - " unless oper_.typef==1 %><%= oper_.price %></td>
+            <td><%= oper_.name %></td>
+            <td><%= @hash_cat[oper_.categoty_id] %></td>
+            <td><%= link_to 'Edit', edit_incexp_path(oper_) %></td>
+            <td><%= link_to 'Delete', oper_, method: :delete, data: {confirm: 'Are you sure?'} %></td>
+          </tr>
+      <% end %>
+      </tbody>
+    </table>
+    <%= will_paginate %>
+<% else %>
+    <h3>Add operation to track!</h3>
+<% end %>

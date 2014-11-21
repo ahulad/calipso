@@ -1,0 +1,16 @@
+<div style="padding-top: 100px;">
+  <h3>Add category</h3>
+
+  <div class="row">
+    <div class="span6 offset3">
+      <%= form_for(@category) do |f| %>
+          <%= f.label :name %>
+          <%= f.text_field :name %>
+          <%= f.label :type %>
+          <%= f.select(:typef, [['expense', 0], ['income', 1]]) %>
+          <br/><hr>
+          <%= f.submit "Create category", class: "btn btn-large btn-primary" %>
+      <% end %>
+    </div>
+  </div>
+</div>

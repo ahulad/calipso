@@ -1,0 +1,17 @@
+development:
+  adapter: postgresql
+  encoding: unicode
+  database: blog_development
+  pool: 5
+  username: vova
+  password: qazwsx
+
+test: &test
+  adapter: postgresql
+  encoding: unicode
+  database: blog_test
+  pool: 5
+  username: vova
+  password: qazwsx
+cucumber:
+  <<: *test

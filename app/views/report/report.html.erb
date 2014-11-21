@@ -1,0 +1,49 @@
+<h3>Report for personal income/expense</h3>
+<% provide(:title, 'Report') %>
+<hr>
+<%= form_tag("", method: "post") do %>
+    <table class="">
+      <tr>
+        <td>
+          <b>Category: </b>  <%= select_tag(:cityid, options_for_select(@sel_opt, @s_cat)) %>
+        </td>
+        <td style="padding-right: 5px;"></td>
+        <td valign="top"><b>From: </b><%= text_field_tag(:fromd, @s_start) %></td>
+        <td style="padding-right: 5px;" valign="top"><b>To: </b><%= text_field_tag(:tod, @s_stop) %></td>
+        <td style="padding-right: 5px;">
+          <input type="submit" name="commit" value="Generate" onclick="location.href='<%= new_user_session_path%>'" class="btn btn-large btn-primary">
+        </td>
+      </tr>
+    </table>
+<% end %>
+
+
+<% if @incexps.count>0 %>
+    <%= render 'layouts/tableout' %>
+    <table class="table">
+      <thead>
+      <tr>
+        <th>Data</th>
+        <th>Price</th>
+        <th>Title</th>
+        <th>Category</th>
+      </tr>
+      </thead>
+      <tbody>
+      <% @incexps.each do |oper_| %>
+          <tr class="<%= oper_.typef==1 ? 'success' : 'error' %>">
+            <td class="bg-danger"><%= oper_.datefinans.to_s(:ru_datetime) %></td>
+            <td>&nbsp;<%= " - " unless oper_.typef==1 %><%= oper_.price %></td>
+            <td><%= oper_.name %></td>
+            <td><%= @hash_cat[oper_.categoty_id] %></td>
+          </tr>
+      <% end %>
+      </tbody>
+    </table>
+<% end if !(@incexps.nil?) %>
+
+<script type="text/javascript">
+    jQuery(document).ready(function ($) {
+        $("#fromd,#tod").datepicker();
+    });
+</script>

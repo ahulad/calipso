@@ -1,0 +1,16 @@
+<pre>
+  <table style="font-size: 20px;">
+    <tr>
+      <td><%= image_tag image_path('babki.png'), class: "left_babki", width: "100" %></td>>
+      <td class="text-error" align="left">
+        <b>Expense: </b><%= "-" unless @tableout[0].to_i<=0 %><%= @tableout[0]%> $
+      </td>
+      <td  class="text-success" align="left">
+        <b>Income: </b><%= @tableout[1]%> $
+      </td>
+      <td class="text-info" align="left">
+        <b>Balance: </b><%= @tableout[1]-@tableout[0]%> $
+      </td>
+    </tr>
+  </table>
+</pre>

@@ -1,0 +1,20 @@
+<div class="navbar navbar-fixed-top navbar-inverse">
+  <div class="navbar-inner">
+    <div class="container">
+      <nav>
+        <ul class="nav pull-right">
+          <li><%= link_to "Home", root_path %></li>
+          <% if user_signed_in? %>
+              <li><%= link_to "Categories", categories_path %></li>
+              <li><%= link_to "Operation", incexps_path %></li>
+              <li><%= link_to "Report", report_path %></li>
+              <li><%= link_to 'Sign out', destroy_user_session_path, :method => :delete %></li>
+          <% else %>
+              <li><%= link_to 'Sign in', new_user_session_path %></li>
+          <% end %>
+          <li><%= link_to "Help",help_path %></li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</div>

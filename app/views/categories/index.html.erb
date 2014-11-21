@@ -1,0 +1,28 @@
+<h3>List of categories</h3>
+<% provide(:title, 'Categories') %>
+<br>
+<input type="button" name="commit" value="New Category" onclick="location.href='<%= new_category_path%>'" class="btn btn-large btn-primary">
+<br>
+<% if @category.count>0 %>
+    <table class="table">
+      <thead>
+      <tr>
+        <th>Title</th>
+        <th>Type</th>
+        <th colspan="3">Operation</th>
+      </tr>
+      </thead>
+      <tbody>
+      <% @category.each do |cat_| %>
+          <tr>
+            <td><%= cat_.name %></td>
+            <td><%= cat_.typef==1 ? "income" : "expense" %></td>
+            <td><%= link_to 'Edit', edit_category_path(cat_) %></td>
+            <td><%= link_to 'Delete', cat_, method: :delete, data: {confirm: 'Are you sure?'} %></td>
+          </tr>
+      <% end %>
+      </tbody>
+    </table>
+<% else %>
+    <h3>Add category!</h3>
+<% end %>

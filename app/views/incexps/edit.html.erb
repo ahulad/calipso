@@ -1,0 +1,13 @@
+<h3>Editing category</h3>
+<div class="row">
+  <div class="span6 offset3">
+    <%= form_for(@operation) do |f| %>
+        <%= f.label "price($)" %>
+        <%= f.text_field :price %>
+        <%= f.label :name %>
+        <%= f.text_field :name %>
+         <br/>
+        <%= f.submit "Update operation", class: "btn btn-large btn-primary" %>
+    <% end %>
+  </div>
+</div>
